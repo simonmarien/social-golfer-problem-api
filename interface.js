@@ -37,7 +37,7 @@ server.listen(port, function () {
     "forbiddenPairs": [] //[[0,1]]
     }
  */
-server.get('/', function (req, res, next) {
+server.post('/', function (req, res, next) {
     //Check for content-type
     if (!req.is('json')) {
         res.status(415)
