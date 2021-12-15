@@ -21,7 +21,8 @@
   "homepage": "https://github.com/simonmarien/social-golfer-problem-api#readme",
   "dependencies": {
     "lodash": "^4.17.21",
-    "restify": "^8.6.0",
+    "restify": "^7.7.0",
+    "restify-cors-middleware": "^1.1.1",
     "restify-errors": "^8.0.2",
     "underscore": "^1.13.1"
   },

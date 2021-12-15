@@ -1,6 +1,8 @@
 const restify = require('restify')
 const geneticSolver = require('./lib/geneticSolver')
 var _ = require('underscore')
+corsMiddleware =require("restify-cors-middleware");
+
 
 
 //Config
@@ -20,6 +22,15 @@ server.use(
         return next();
     }
 );
+
+const cors = corsMiddleware({
+    origins: ["*"],
+    allowHeaders: ["Authorization"],
+    exposeHeaders: ["Authorization"]
+});
+
+server.pre(cors.preflight);
+server.use(cors.actual);
 
 const port = process.env.PORT || 5000;
 server.listen(port, function () {
