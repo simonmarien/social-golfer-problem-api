@@ -22,6 +22,12 @@ server.listen(port, function () {
 /**
  * Get request for social golfer problem api
  *
+ * {
+    "names": ["Jan","Jos","Paul","Test"],
+    "ofSize": 2,
+    "forRounds": 3,
+    "forbiddenPairs": [] //[[0,1]]
+    }
  */
 server.get('/', function (req, res, next) {
     //Check for content-type
@@ -45,7 +51,7 @@ function run(names, ofSize, forRounds, forbiddenPairs){
     let ret = {groups: [], groupScores: []}
 
     console.log(result)
-    result.forEach((e,index) => {
+    result.forEach((e) => {
         /*
         {
             bestOption: { groups: [ [Array], [Array] ], groupsScores: [ 0, 0 ], total: 0 }
@@ -65,7 +71,13 @@ function run(names, ofSize, forRounds, forbiddenPairs){
         })
         console.log('list',list)
 
-
+        //Fill in groupScores
+        list = []
+        console.log(e.bestOption.groupsScores)
+        e.bestOption.groupsScores.forEach(score => {
+            list.push(score)
+        })
+        ret.groupScores.push(list)
     })
 
     return ret
