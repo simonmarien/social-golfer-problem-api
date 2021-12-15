@@ -1,0 +1,30 @@
+{
+  "name": "social-golfer-problem-api",
+  "version": "1.0.0",
+  "description": "API interface for the geneticSolver by Brad Buchanan (https://github.com/islemaster/good-enough-golfers).",
+  "main": "interface.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonmarien/social-golfer-problem-api.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simonmarien/social-golfer-problem-api/issues"
+  },
+  "homepage": "https://github.com/simonmarien/social-golfer-problem-api#readme",
+  "dependencies": {
+    "restify": "^8.6.0",
+    "restify-errors": "^8.0.2"
+  },
+  "engines": {
+    "node": "17.x",
+    "npm": "8.x"
+  }
+}
