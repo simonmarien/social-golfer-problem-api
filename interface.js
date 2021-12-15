@@ -24,7 +24,7 @@ server.listen(port, function () {
  *
  * {
     "names": ["Jan","Jos","Paul","Test"],
-    "ofSize": 2,
+    "groups": 2,
     "forRounds": 3,
     "forbiddenPairs": [] //[[0,1]]
     }
@@ -35,15 +35,15 @@ server.get('/', function (req, res, next) {
         res.status(415)
         return next(res.send('content-type: application/json required'));
     }
-    const total = run(req.body.names, req.body.ofSize, req.body.forRounds, req.body.forbiddenPairs, (result) => {})
+    const total = run(req.body.names, req.body.groups, req.body.forRounds, req.body.forbiddenPairs, (result) => {})
     //console.log(req.body)
     res.send(total)
     return next()
 })
 
-function run(names, ofSize, forRounds, forbiddenPairs){
+function run(names, groups, forRounds, forbiddenPairs){
     console.log(names)
-    groups = Math.ceil(names.length/ofSize)
+    ofSize = Math.ceil(names.length/groups)
     console.log(groups)
 
     let result = geneticSolver(groups, ofSize, forRounds, forbiddenPairs, (result) => {})
