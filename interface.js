@@ -55,7 +55,6 @@ server.post('/', function (req, res, next) {
         return next(res.send('content-type: application/json required'));
     }
     const total = run(req.body.names, req.body.groups, req.body.forRounds, req.body.forbiddenPairs, (result) => {})
-    //console.log(req.body)
     res.send(total)
     return next()
 })
@@ -88,20 +87,22 @@ function run(names, groups, forRounds, forbiddenPairs){
             group.forEach(person => {
                 nested.push(names[person])
             })
-            console.log('GR',group)
             list.push(nested)
             ret.groups.push(list)
         })
-        console.log('list',list)
 
         //Fill in groupScores
         list = []
-        console.log(e.bestOption.groupsScores)
         e.bestOption.groupsScores.forEach(score => {
             list.push(score)
         })
         ret.groupScores.push(list)
     })
+
+    let filter = ret.groups.filter((e,i)=>{
+        return i%2===0
+    })
+    ret.groups = filter
 
     return ret
 }
