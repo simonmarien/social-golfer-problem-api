@@ -88,8 +88,8 @@ function run(names, groups, forRounds, forbiddenPairs){
                 nested.push(names[person])
             })
             list.push(nested)
-            ret.groups.push(list)
         })
+        ret.groups.push(list)
 
         //Fill in groupScores
         list = []
@@ -98,11 +98,6 @@ function run(names, groups, forRounds, forbiddenPairs){
         })
         ret.groupScores.push(list)
     })
-
-    let filter = ret.groups.filter((e,i)=>{
-        return i%2===0
-    })
-    ret.groups = filter
 
     return ret
 }
