@@ -61,6 +61,10 @@ server.post('/', function (req, res, next) {
 })
 
 function run(names, groups, forRounds, forbiddenPairs){
+
+    if (!names || !groups || !forRounds || !forbiddenPairs){
+        console.log("There is a null entry");return;
+    }
     console.log(names)
     ofSize = Math.ceil(names.length/groups)
     console.log(groups)
