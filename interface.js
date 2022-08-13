@@ -54,12 +54,12 @@ server.post('/', function (req, res, next) {
         res.status(415)
         return next(res.send('content-type: application/json required'));
     }
-    const total = run(req.body.names, req.body.groups, req.body.forRounds, req.body.forbiddenPairs, (result) => {})
+    const total = run(req.body.names, req.body.groups, req.body.forRounds, req.body.forbiddenPairs, [], (result) => {})
     res.send(total)
     return next()
 })
 
-function run(names, groups, forRounds, forbiddenPairs){
+function run(names, groups, forRounds, forbiddenPairs, wantedPairs){
 
     if (!names || !groups || !forRounds || !forbiddenPairs){
         console.log("There is a null entry");return;
@@ -68,7 +68,7 @@ function run(names, groups, forRounds, forbiddenPairs){
     ofSize = Math.ceil(names.length/groups)
     console.log(groups)
 
-    let result = geneticSolver(groups, ofSize, forRounds, forbiddenPairs, (result) => {})
+    let result = geneticSolver(groups, ofSize, forRounds, forbiddenPairs, wantedPairs, (result) => {})
 
     let ret = {groups: [], groupScores: []}
 
